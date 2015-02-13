@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Quiz\Category.cs" />
     <Compile Include="Quiz\Client.cs" />
     <Compile Include="Email\Attachment.cs" />
     <Compile Include="Email\Image.cs" />
