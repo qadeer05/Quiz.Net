@@ -25,12 +25,14 @@ namespace Quiz.Data.Context.EntityFramework
 
         public DbSet<AppSetting> SiteSettings { get; set; }
 
+        public DbSet<Question> QuestionBank { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ImageMap());
             modelBuilder.Configurations.Add(new AppSettingMap());
             modelBuilder.Configurations.Add(new MessageMap());
-            //modelBuilder.Configurations.Add(new QuestionMap());
+            modelBuilder.Configurations.Add(new QuestionMap());
             //modelBuilder.Configurations.Add(new RoomMap());
         }
 

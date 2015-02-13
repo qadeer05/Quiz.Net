@@ -8,7 +8,7 @@ using Quiz.Data.Infrastructure.Repositories;
 
 namespace Quiz.Data.Infrastructure.UnitOfWork
 {
-    public class UserUnitOfWork  : IDisposable
+    public class UserUnitOfWork : IDisposable
     {
         private UserDbContext _context = new UserDbContext("DefaultConnection");
         private UserProfileRepository _userProfileRepository;
@@ -39,24 +39,22 @@ namespace Quiz.Data.Infrastructure.UnitOfWork
             get { return _resourceRepository; }
         }
 
-         public OperationsToRolesRepository OperationsToRolesRepository
+        public OperationsToRolesRepository OperationsToRolesRepository
         {
             get { return _operationsToRolesRepository; }
         }
 
         public int Save()
-         {
+        {
             return _context.SaveChanges();
-         }
+        }
 
         public UserDbContext Context
         {
-            get{
-                return _context;
-            }
+            get { return _context; }
         }
 
-       private bool disposed = false;
+        private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
         {
@@ -76,5 +74,5 @@ namespace Quiz.Data.Infrastructure.UnitOfWork
             GC.SuppressFinalize(this);
         }
     }
-   
+
 }

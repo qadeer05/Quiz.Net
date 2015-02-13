@@ -11,7 +11,7 @@ namespace Quiz.Data.Infrastructure.Interfaces.Repositories
     {
         void Delete(T entity);
 
-        IEnumerable<T> Get(
+        IQueryable<T> Get(
             Expression<Func<T, bool>> filter,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy,
             string includeProperties);
