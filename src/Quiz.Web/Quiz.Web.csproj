@@ -195,6 +195,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Filters\BasicAuthorizeAttribute.cs" />
     <Compile Include="Filters\SimpleAuthorizeAttribute.cs" />
@@ -318,10 +319,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Question\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

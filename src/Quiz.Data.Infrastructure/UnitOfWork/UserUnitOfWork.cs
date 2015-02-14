@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Quiz.Data.Context.EntityFramework;
 using Quiz.Data.Infrastructure.Repositories;
+using Quiz.Infrastructure;
 
 namespace Quiz.Data.Infrastructure.UnitOfWork
 {
     public class UserUnitOfWork : IDisposable
     {
-        private UserDbContext _context = new UserDbContext("DefaultConnection");
+        private UserDbContext _context = new UserDbContext(Constants.DefaultConnectionString);
         private UserProfileRepository _userProfileRepository;
         private MembershipRepository _membershipRepository;
         private ResourceRepository _resourceRepository;

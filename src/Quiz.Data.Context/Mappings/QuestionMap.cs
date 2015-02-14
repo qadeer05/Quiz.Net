@@ -36,7 +36,6 @@ namespace Quiz.Data.Context.Mappings
             Property(t => t.Option3).HasColumnName("Option3");
             Property(t => t.Option4).HasColumnName("Option4");
             Property(t => t.Answer).HasColumnName("Answer");
-
         }
     }
 }

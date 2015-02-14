@@ -8,20 +8,21 @@ using System.Threading.Tasks;
 using Quiz.Data.Context.EntityFramework;
 using Quiz.Data.Infrastructure.Repositories;
 using Quiz.Domain;
+using Quiz.Infrastructure;
 using Quiz.Infrastructure.Services;
 
 namespace Quiz.Data.Infrastructure.UnitOfWork
 {
     public class QuestionBankUnitOfWork: BaseUnitOfWork<QuizDbContext>
     {
-        private readonly QuestionBankRepository _questionBankRepository;
+        private readonly QuestionRepository _questionBankRepository;
         private readonly CategoryRepository _categoryRepository;
 
         public QuestionBankUnitOfWork()
         {
-            Context = new QuizDbContext("DefaultConnection");
+            Context = new QuizDbContext(Constants.DefaultConnectionString);
             _categoryRepository = new CategoryRepository(Context);
-            _questionBankRepository = new QuestionBankRepository(Context);
+            _questionBankRepository = new QuestionRepository(Context);
         }
 
         public IQueryable<Category> GetCategories(string sortOrder, string searchString)
@@ -29,9 +30,9 @@ namespace Quiz.Data.Infrastructure.UnitOfWork
             return _categoryRepository.GetCategories(sortOrder, searchString);
         }
 
-        public IEnumerable<Question> GetQuestions(string category)
+        public IEnumerable<Question> GetQuestions(int category, string sortOrder, string searchString)
         {
-            return _questionBankRepository.Get();
+            return _questionBankRepository.GetQuestions(category, sortOrder, searchString);
         }
     }
 }

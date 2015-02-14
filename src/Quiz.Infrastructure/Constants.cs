@@ -14,7 +14,7 @@ namespace Quiz.Infrastructure
         //public const string AdminRole = "Admin";
         //public const string UserRole = "User";
 
-        public const string ConnectionString = "DefaultConnection";
+        public const string DefaultConnectionString = "DefaultConnection";
         public const int PageSize = 9;
     }
 }
