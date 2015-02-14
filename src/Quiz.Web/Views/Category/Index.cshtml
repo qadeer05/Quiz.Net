@@ -1,0 +1,36 @@
+﻿@model PagedList.IPagedList<Quiz.Domain.Category>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>Categories</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Category", FormMethod.Get))
+{
+    <p>
+        Search: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<ul>
+@foreach (var item in Model)
+    {
+        <li>
+                @Html.ActionLink(item.Name, "Index", "Question", new {category=item.Id}, null)
+        </li>
+    }
+
+</ul>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

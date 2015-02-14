@@ -10,9 +10,11 @@ namespace Quiz.Framework.Services
 {
     public class QuestionBankService
     {
-        public static IEnumerable<Question> GetQuestions(string category, string sortOrder, string searchString)
+        public static IEnumerable<Question> GetQuestions(int category, string sortOrder, string searchString)
         {
-            return null;
+            var uow = new QuestionBankUnitOfWork();
+            var categories = uow.GetQuestions(category, sortOrder, searchString);
+            return categories;
         }
 
         public static IQueryable<Category> GetCategories(string sortOrder, string searchString)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
@@ -9,10 +10,10 @@ using Quiz.Infrastructure;
 
 namespace Quiz.Web.Controllers
 {
-    public class QuestionController : Controller
+    [Authorize]
+    public class CategoryController : Controller
     {
-
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? category, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -28,13 +29,12 @@ namespace Quiz.Web.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-            category = category ?? -1;
-            var questions = QuestionBankService.GetQuestions(category.Value, sortOrder, searchString);
+
+            var categories = QuestionBankService.GetCategories(sortOrder, searchString);
 
             int pageNumber = (page ?? 1);
-            return View(questions.ToPagedList(pageNumber, Constants.PageSize));
+            return View(categories.ToPagedList(pageNumber, Constants.PageSize));
         }
-
 
         public ActionResult Create()
         {
@@ -50,6 +50,6 @@ namespace Quiz.Web.Controllers
         {
             return null;
         }
-
+        
     }
 }

@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityFramework\ContextInitailizer.cs" />
+    <Compile Include="EntityFramework\DatabaseInitailizer.cs" />
     <Compile Include="EntityFramework\QuizDbContext.cs" />
     <Compile Include="EntityFramework\UserDbContext.cs" />
     <Compile Include="Mappings\AppSettingMap.cs" />
