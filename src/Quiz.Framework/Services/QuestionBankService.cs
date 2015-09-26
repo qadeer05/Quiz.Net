@@ -13,8 +13,8 @@ namespace Quiz.Framework.Services
         public static IEnumerable<Question> GetQuestions(int categoryId, string sortOrder, string searchString)
         {
             var uow = new QuestionBankUnitOfWork();
-            var categories = uow.GetQuestions(categoryId, sortOrder, searchString);
-            return categories;
+            var questions = uow.GetQuestions(categoryId, sortOrder, searchString);
+            return questions;
         }
 
         public static IEnumerable<Category> GetCategories(string sortOrder, string searchString)

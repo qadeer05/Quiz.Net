@@ -28,7 +28,7 @@ namespace Quiz.Data.Infrastructure.Repositories
             switch (sortOrder)
             {
                 case "category_desc":
-                    questions = questions.OrderByDescending(s => s.Category);
+                    questions = questions.OrderByDescending(s => s.Category.Name);
                     break;
                 case "date":
                     questions = questions.OrderBy(s => s.DateCreated);
@@ -37,7 +37,7 @@ namespace Quiz.Data.Infrastructure.Repositories
                     questions = questions.OrderByDescending(s => s.DateCreated);
                     break;
                 default:  
-                    questions = questions.OrderBy(s => s.Category);
+                    questions = questions.OrderBy(s => s.Category.Name);
                     break;
             }
             return questions;
