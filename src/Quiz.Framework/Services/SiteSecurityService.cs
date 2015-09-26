@@ -62,11 +62,17 @@ namespace Quiz.Framework.Services
 
         public static void Register(string connectionString)
         {
-            UserDbContext context = new UserDbContext(connectionString);
-            context.Database.Initialize(true);
-            if (!WebMatrix.WebData.WebSecurity.Initialized)
+            var quizDbContext = new QuizDbContext(connectionString);
+            quizDbContext.Database.Initialize(true);
+            if (!WebSecurity.Initialized)
+            {
+                var userDbContext = new UserDbContext(connectionString);
+                userDbContext.Database.Initialize(true);
+
                 // The parameters being passed below should match with what has been specified in the UserProfile model class
-                WebMatrix.WebData.WebSecurity.InitializeDatabaseConnection(connectionString, "webpages_UserProfile", "UserId", "UserName", autoCreateTables: true);
+                WebSecurity.InitializeDatabaseConnection(connectionString, "webpages_UserProfile", "UserId", "UserName",
+                                                         autoCreateTables: true);
+            }
         }
 
         public static bool ValidateUser(string userName, string password)
