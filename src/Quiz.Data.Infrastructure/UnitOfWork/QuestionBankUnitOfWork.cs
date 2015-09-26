@@ -37,7 +37,7 @@ namespace Quiz.Data.Infrastructure.UnitOfWork
 
         public Category GetCategoryById(int categoryId)
         {
-            return _categoryRepository.GetByID(categoryId);
+            return _categoryRepository.GetById(categoryId);
         }
     }
 }
