@@ -24,7 +24,7 @@ namespace Quiz.Data.Infrastructure.Repositories
         protected DbContext Context { get; private set; }
 
 
-        public virtual IEnumerable<T> Get(
+        public virtual IQueryable<T> Get(
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = "")
@@ -44,15 +44,15 @@ namespace Quiz.Data.Infrastructure.Repositories
 
             if (orderBy != null)
             {
-                return orderBy(query).ToList();
+                return orderBy(query);
             }
             else
             {
-                return query.ToList();
+                return query;
             }
         }
 
-        public virtual T GetByID(object id)
+        public virtual T GetById(object id)
         {
             return _dbSet.Find(id);
         }

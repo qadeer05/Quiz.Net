@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Quiz.Framework.Services;
+using Quiz.Infrastructure;
 
 namespace Quiz.Web
 {
@@ -25,7 +26,7 @@ namespace Quiz.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            SiteSecurityService.Register("DefaultConnection");
+            SiteSecurityService.Register(Constants.DefaultConnectionString);
         }
     }
 }
