@@ -17,20 +17,24 @@ namespace Quiz.Data.Context.EntityFramework
 
         }
         
-        public DbSet<Image> Images { get; set; }
+        public DbSet<Image> ImageSet { get; set; }
 
-        public DbSet<Message> Messages { get; set; }
+        public DbSet<Message> MessageSet { get; set; }
 
-        public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<Attachment> AttachmentSet { get; set; }
 
-        public DbSet<AppSetting> SiteSettings { get; set; }
+        public DbSet<AppSetting> SiteSettingsSet { get; set; }
+
+        public DbSet<Question> QuestionSet { get; set; }
+
+        public DbSet<Category> CategorySet { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ImageMap());
             modelBuilder.Configurations.Add(new AppSettingMap());
             modelBuilder.Configurations.Add(new MessageMap());
-            //modelBuilder.Configurations.Add(new QuestionMap());
+            modelBuilder.Configurations.Add(new QuestionMap());
             //modelBuilder.Configurations.Add(new RoomMap());
         }
 

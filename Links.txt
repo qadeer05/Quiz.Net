@@ -1,0 +1,2 @@
+http://www.codeproject.com/Articles/851437/SignalR-plus-RX-Streaming-Data-Demo-App-of
+http://visualstudiomagazine.com/articles/2013/04/10/essential-reactive-extensions.aspx
