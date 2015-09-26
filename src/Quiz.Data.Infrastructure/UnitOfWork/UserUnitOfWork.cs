@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Quiz.Data.Context.EntityFramework;
 using Quiz.Data.Infrastructure.Repositories;
+using Quiz.Infrastructure;
 
 namespace Quiz.Data.Infrastructure.UnitOfWork
 {
-    public class UserUnitOfWork  : IDisposable
+    public class UserUnitOfWork : IDisposable
     {
-        private UserDbContext _context = new UserDbContext("DefaultConnection");
+        private UserDbContext _context = new UserDbContext(Constants.DefaultConnectionString);
         private UserProfileRepository _userProfileRepository;
         private MembershipRepository _membershipRepository;
         private ResourceRepository _resourceRepository;
@@ -39,24 +40,22 @@ namespace Quiz.Data.Infrastructure.UnitOfWork
             get { return _resourceRepository; }
         }
 
-         public OperationsToRolesRepository OperationsToRolesRepository
+        public OperationsToRolesRepository OperationsToRolesRepository
         {
             get { return _operationsToRolesRepository; }
         }
 
         public int Save()
-         {
+        {
             return _context.SaveChanges();
-         }
+        }
 
         public UserDbContext Context
         {
-            get{
-                return _context;
-            }
+            get { return _context; }
         }
 
-       private bool disposed = false;
+        private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
         {
@@ -76,5 +75,5 @@ namespace Quiz.Data.Infrastructure.UnitOfWork
             GC.SuppressFinalize(this);
         }
     }
-   
+
 }
